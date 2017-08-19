@@ -1,10 +1,15 @@
 package app.clappingape.com.kokoro.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
 /**
  * Created by arysuryawan on 8/18/17.
  */
-
-public class Source {
+public class Source implements Serializable {
 
     private String id;
     private String name;
@@ -14,7 +19,7 @@ public class Source {
     private String language;
     private String country;
     private UrlLogos urlsToLogos;
-    private String[] sortByAvailable;
+    private String[] sortBysAvailable;
 
 
     public String getId() {
@@ -81,21 +86,18 @@ public class Source {
         this.urlsToLogos = urlsToLogos;
     }
 
-    public String[] getSortByAvailable() {
-        return sortByAvailable;
+    public String[] getSortBysAvailable() {
+        return sortBysAvailable;
     }
 
-    public void setSortByAvailable(String[] sortByAvailable) {
-        this.sortByAvailable = sortByAvailable;
+    public void setSortBysAvailable(String[] sortBysAvailable) {
+        this.sortBysAvailable = sortBysAvailable;
     }
 
-
-
-
-    private class UrlLogos {
-        private String small;
-        private String medium;
-        private String large;
+    public class UrlLogos {
+        String small;
+        String medium;
+        String large;
 
         public String getSmall() {
             return small;
