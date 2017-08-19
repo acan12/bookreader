@@ -2,6 +2,8 @@ package app.clappingape.com.kokoro.model.api;
 
 import android.support.annotation.Nullable;
 
+import app.clappingape.com.kokoro.model.Article;
+import app.clappingape.com.kokoro.model.Source;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -16,6 +18,6 @@ public interface IApi {
     Call<Source> getSources(@Query("language=en") @Nullable String language);
 
     @GET("articles")
-    Call<Article> getArticles(@Query("source") String source, @Query("sortBy") String sortBy, @Query("apiKey") String apiKey);
+    Call<Article> getArticles(@Query("source") String sourceId, @Query("sortBy") String sortBy, @Query("apiKey") String apiKey);
 
 }

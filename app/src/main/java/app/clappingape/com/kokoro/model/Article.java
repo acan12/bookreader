@@ -1,10 +1,10 @@
-package app.clappingape.com.kokoro.model.api;
+package app.clappingape.com.kokoro.model;
 
 /**
  * Created by arysuryawan on 8/18/17.
  */
 
-class Article {
+public class Article {
 
     private String author;
     private String title;
