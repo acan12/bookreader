@@ -1,7 +1,6 @@
 package app.clappingape.com.kokoro.model.api.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import app.clappingape.com.kokoro.model.Source;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MultipleResource {
+public class MultipleResponse {
 
     private String status;
     private String source;

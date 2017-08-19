@@ -1,9 +1,5 @@
 package app.clappingape.com.kokoro.model.dao;
 
-import android.app.Activity;
-
-import java.io.IOException;
-
 import app.clappingape.com.kokoro.ui.base.BaseActivity;
 import retrofit2.Callback;
 

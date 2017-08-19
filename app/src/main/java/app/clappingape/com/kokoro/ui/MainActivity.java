@@ -3,16 +3,13 @@ package app.clappingape.com.kokoro.ui;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import app.clappingape.com.kokoro.R;
-import app.clappingape.com.kokoro.model.Source;
-import app.clappingape.com.kokoro.model.api.BaseApi;
-import app.clappingape.com.kokoro.model.api.response.MultipleResource;
+import app.clappingape.com.kokoro.model.api.response.MultipleResponse;
 import app.clappingape.com.kokoro.model.dao.SourceDao;
 import app.clappingape.com.kokoro.ui.base.BaseActivity;
 
@@ -56,7 +53,7 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
-    protected void apiResponseCallback(MultipleResource rm) {
+    protected void apiResponseCallback(MultipleResponse rm) {
         Toast.makeText(this, "Size= "+rm.getSources().size(), Toast.LENGTH_LONG).show();
     }
 
