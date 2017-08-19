@@ -12,7 +12,7 @@ import retrofit2.Callback;
 public class Api extends BaseApi {
 
     public static void getApiSources(final BaseActivity ac, Callback callback) {
-        initAPI().callApiSources("en")
+        initApi().callApiSources("en")
                 .enqueue((retrofit2.Callback<MultipleResponse>) callback);
     }
 

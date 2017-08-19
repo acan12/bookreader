@@ -21,7 +21,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class BaseApi {
     private static IApi api;
 
-    public static IApi initAPI() {
+    public static IApi initApi() {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -1,0 +1,30 @@
+package support.component;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+
+import app.clappingape.com.kokoro.ui.base.BaseActivity;
+
+/**
+ * Created by arysuryawan on 8/19/17.
+ */
+
+public class DialogComponent {
+    private static ProgressDialog dialog;
+
+    synchronized public static AlertDialog showProgressDialog(Context context){
+        if(dialog == null){
+            dialog = new ProgressDialog(context);
+            dialog.show();
+        }
+
+        return dialog;
+    }
+
+    public static void dismissProgressDialog(BaseActivity ac){
+        if(!ac.isFinishing()){
+            dialog.dismiss();
+        }
+    }
+}
