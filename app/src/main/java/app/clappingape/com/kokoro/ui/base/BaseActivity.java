@@ -13,7 +13,7 @@ import support.component.DialogComponent;
  * Created by arysuryawan on 8/16/17.
  */
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected void apiResponseCallback(MultipleResponse mr) {
     }
 
