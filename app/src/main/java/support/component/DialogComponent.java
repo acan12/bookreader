@@ -1,10 +1,11 @@
 package support.component;
 
-import android.app.AlertDialog;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import app.clappingape.com.kokoro.ui.base.BaseActivity;
+import app.clappingape.com.androidca.ui.base.BaseActivity;
+
 
 /**
  * Created by arysuryawan on 8/19/17.
@@ -13,8 +14,8 @@ import app.clappingape.com.kokoro.ui.base.BaseActivity;
 public class DialogComponent {
     private static ProgressDialog dialog;
 
-    synchronized public static ProgressDialog showProgressDialog(Context context){
-        if(dialog == null){
+    synchronized public static ProgressDialog showProgressDialog(Context context) {
+        if (dialog == null) {
             dialog = new ProgressDialog(context);
             dialog.setMessage("...Loading");
             dialog.show();
@@ -23,8 +24,8 @@ public class DialogComponent {
         return dialog;
     }
 
-    public static void dismissProgressDialog(BaseActivity ac){
-        if(!ac.isFinishing()){
+    public static void dismissProgressDialog(BaseActivity ac) {
+        if (!ac.isFinishing()) {
             dialog.dismiss();
         }
     }
