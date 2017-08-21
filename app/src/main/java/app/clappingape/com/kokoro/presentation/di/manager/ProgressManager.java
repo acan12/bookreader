@@ -1,4 +1,4 @@
-package app.clappingape.com.kokoro.presentation.di.module;
+package app.clappingape.com.kokoro.presentation.di.manager;
 
 
 import app.clappingape.com.kokoro.presentation.di.IProgress;

@@ -14,10 +14,11 @@ import support.component.DialogComponent;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
-    protected void apiResponseCallback(MultipleResponse mr) {
+    protected void apiCallbackResponse(MultipleResponse mr) {
     }
 
-    protected void apiFailureCallback(String message) {
+    protected void apiCallbackFailure(String message) {
+        // --- default callback if not defined on child class --
         Toast.makeText(this, "Error: " + message, Toast.LENGTH_LONG).show();
         Log.e("Message:", message);
     }
@@ -25,12 +26,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void onCallbackResponse(Call<MultipleResponse> call, Response response) {
         DialogComponent.dismissProgressDialog(this);
-        this.apiResponseCallback((MultipleResponse) response.body());
+        this.apiCallbackResponse((MultipleResponse) response.body());
     }
 
     public void onCallbackFailure(Throwable t) {
         DialogComponent.dismissProgressDialog(this);
-        this.apiFailureCallback(t.getMessage());
+        this.apiCallbackFailure(t.getMessage());
     }
 
 

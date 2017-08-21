@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
-    protected void apiResponseCallback(MultipleResponse mr) {
+    protected void apiCallbackResponse(MultipleResponse mr) {
         if(mr.getStatus().equals("ok")){
             Toast.makeText(this, "Status: OK, Size= "+mr.getSources().size(), Toast.LENGTH_LONG).show();
         }else{
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void apiFailureCallback(String message) {
+    protected void apiCallbackFailure(String message) {
         Log.e("ERROR: ", message);
     }
 }

@@ -3,6 +3,7 @@ package app.clappingape.com.kokoro.presentation.di.module;
 
 import app.clappingape.com.kokoro.App;
 import app.clappingape.com.kokoro.presentation.di.IProgress;
+import app.clappingape.com.kokoro.presentation.di.manager.ProgressManager;
 import dagger.Module;
 import dagger.Provides;
 
@@ -18,7 +19,6 @@ public class AppModule {
     public AppModule(App app) {
         this.app = app;
     }
-
 
     @Provides
     protected IProgress provideProgressStatus() {

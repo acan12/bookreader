@@ -4,8 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import app.clappingape.com.kokoro.presentation.di.component.AppComponent;
-
 import app.clappingape.com.kokoro.presentation.di.component.DaggerAppComponent;
+import app.clappingape.com.kokoro.presentation.di.module.ApiServiceModule;
 import app.clappingape.com.kokoro.presentation.di.module.AppModule;
 
 /**
@@ -20,6 +20,7 @@ public class App extends Application {
         super.onCreate();
         component = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
+                .apiServiceModule(new ApiServiceModule(this))
                 .build();
     }
 

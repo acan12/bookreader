@@ -9,7 +9,7 @@ import retrofit2.http.Query;
 /**
  * Created by arysuryawan on 8/18/17.
  */
-public interface IApi {
+public interface ApiService {
 
 
     @Headers({

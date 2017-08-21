@@ -1,10 +1,11 @@
-package app.clappingape.com.kokoro.model.api;
-
+package app.clappingape.com.kokoro.presentation.di.manager;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import app.clappingape.com.kokoro.IConfig;
+import app.clappingape.com.kokoro.model.api.ApiService;
+import app.clappingape.com.kokoro.presentation.di.IApi;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -13,16 +14,15 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-
 /**
- * Created by arysuryawan on 8/18/17.
+ * Created by arysuryawan on 8/21/17.
  */
 
-public class BaseApi {
-    private static ApiService api;
+public class ApiManager implements IApi {
+    private ApiService api;
 
-    public static ApiService initApi() {
-
+    @Override
+    public ApiService getApiService() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -59,4 +59,3 @@ public class BaseApi {
         return api;
     }
 }
-

@@ -1,6 +1,7 @@
 package app.clappingape.com.kokoro.model.dao;
 
 import app.clappingape.com.kokoro.ui.base.BaseActivity;
+import app.clappingape.com.kokoro.ui.base.BaseFragment;
 import retrofit2.Callback;
 
 /**
@@ -10,9 +11,13 @@ import retrofit2.Callback;
 class BaseDao {
 
     private static BaseActivity ac;
+    private static BaseFragment fm;
 
     public BaseDao(BaseActivity ac) {
         this.ac = ac;
+    }
+    public BaseDao(BaseFragment fm) {
+        this.fm = fm;
     }
 
     protected static Callback callback = new Callback() {
@@ -24,6 +29,18 @@ class BaseDao {
         @Override
         public void onFailure(retrofit2.Call call, Throwable t) {
             ac.onCallbackFailure(t);
+        }
+    };
+
+    protected static Callback callbackFragment = new Callback() {
+        @Override
+        public void onResponse(retrofit2.Call call, retrofit2.Response response) {
+            fm.onCallbackResponse(call, response);
+        }
+
+        @Override
+        public void onFailure(retrofit2.Call call, Throwable t) {
+            fm.onCallbackFailure(t);
         }
     };
 
