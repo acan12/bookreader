@@ -1,4 +1,4 @@
-package app.clappingape.com.kokoro.model;
+package app.clappingape.com.kokoro.model.pojo;
 
 /**
  * Created by arysuryawan on 8/18/17.

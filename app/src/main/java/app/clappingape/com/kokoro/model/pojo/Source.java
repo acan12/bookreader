@@ -1,4 +1,4 @@
-package app.clappingape.com.kokoro.model;
+package app.clappingape.com.kokoro.model.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
-import app.clappingape.com.kokoro.model.Source;
+import app.clappingape.com.kokoro.model.pojo.Source;
 
 /**
  * Created by arysuryawan on 8/19/17.
