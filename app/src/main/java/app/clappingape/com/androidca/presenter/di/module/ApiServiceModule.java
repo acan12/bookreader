@@ -5,7 +5,9 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import app.clappingape.com.androidca.presenter.di.IApi;
+import app.clappingape.com.androidca.presenter.di.IProgress;
 import app.clappingape.com.androidca.presenter.di.manager.ApiManager;
+import app.clappingape.com.androidca.presenter.di.manager.ProgressManager;
 import dagger.Module;
 import dagger.Provides;
 

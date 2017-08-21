@@ -21,10 +21,15 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SourceDao dao = new SourceDao(this);
-        dao.getSourcesDAO(this, BaseDao.getInstance(this).callback);
-    }
+        showProgressDialogOnDAOCalled(new SourceDao(this){
 
+            @Override
+            public void call() {
+                this.getSourcesDAO(MainActivity.this, BaseDao.getInstance(MainActivity.this).callback);
+            }
+        });
+
+    }
 
 
     @Override

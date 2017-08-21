@@ -19,6 +19,6 @@ public interface AppComponent {
 
     IApi getApi();
 
-    IProgress getProgressStatus();
+    IProgress getProgressDialog();
 
 }

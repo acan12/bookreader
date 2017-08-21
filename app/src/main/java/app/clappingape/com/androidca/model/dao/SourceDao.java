@@ -16,7 +16,8 @@ public class SourceDao extends BaseDao {
     }
 
     public void getSourcesDAO(BaseActivity ac, Callback callback) {
-        DialogComponent.showProgressDialog(ac);
         Api.doApiSources(ac, callback);
     }
+
+    public void call() {}
 }

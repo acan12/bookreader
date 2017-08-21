@@ -10,21 +10,22 @@ import retrofit2.Callback;
 
 public class BaseDao {
 
-    private static BaseActivity ac=null;
-    private static BaseFragment fm=null;
+    private static BaseActivity ac = null;
+    private static BaseFragment fm = null;
 
     public BaseDao(BaseActivity ac) {
         this.ac = ac;
     }
+
     public BaseDao(BaseFragment fm) {
         this.fm = fm;
     }
 
-    public static BaseDao getInstance(BaseActivity ac){
+    public static BaseDao getInstance(BaseActivity ac) {
         return new BaseDao(ac);
     }
 
-    public static BaseDao getInstance(BaseFragment fm){
+    public static BaseDao getInstance(BaseFragment fm) {
         return new BaseDao(fm);
     }
 
@@ -32,7 +33,7 @@ public class BaseDao {
     public Callback callback = new Callback() {
         @Override
         public void onResponse(retrofit2.Call call, retrofit2.Response response) {
-            if(ac!=null)
+            if (ac != null)
                 BaseActivity.onCallbackResponse(call, response, ac);
             else
                 BaseFragment.onCallbackResponse(call, response, fm);
@@ -40,12 +41,13 @@ public class BaseDao {
 
         @Override
         public void onFailure(retrofit2.Call call, Throwable t) {
-            if(ac!=null)
+            if (ac != null)
                 BaseActivity.onCallbackFailure(t, ac);
             else
                 BaseFragment.onCallbackFailure(t, fm);
         }
     };
+
 
 
 }

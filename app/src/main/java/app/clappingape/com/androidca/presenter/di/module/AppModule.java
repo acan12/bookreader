@@ -21,7 +21,7 @@ public class AppModule {
     }
 
     @Provides
-    protected IProgress provideProgressStatus() {
+    protected IProgress provideProgressDialog() {
         return new ProgressManager();
     }
 

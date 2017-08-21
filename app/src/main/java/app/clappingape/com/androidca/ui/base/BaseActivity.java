@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import app.clappingape.com.androidca.App;
 import app.clappingape.com.androidca.model.api.response.MultipleResponse;
+import app.clappingape.com.androidca.model.dao.BaseDao;
+import app.clappingape.com.androidca.model.dao.SourceDao;
+import app.clappingape.com.androidca.presenter.di.IProgress;
 import retrofit2.Call;
 import retrofit2.Response;
 import support.component.DialogComponent;
@@ -23,6 +27,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Componen
         Toast.makeText(this, "Error: " + message, Toast.LENGTH_LONG).show();
         Log.e("Message:", message);
     }
+
+    protected void showProgressDialogOnDAOCalled(SourceDao dao) {
+        IProgress progress = App.getComponent(this).getProgressDialog();
+        progress.showProgressDialog(this);
+        dao.call();
+    }
+
+
 
 
     public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseActivity ac) {
