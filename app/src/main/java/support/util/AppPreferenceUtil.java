@@ -3,7 +3,7 @@ package support.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import app.clappingape.com.kokoro.R;
+import app.clappingape.com.androidca.R;
 
 
 /**
