@@ -8,10 +8,10 @@ import retrofit2.Callback;
  * Created by arysuryawan on 8/19/17.
  */
 
-class BaseDao {
+public class BaseDao {
 
-    private static BaseActivity ac;
-    private static BaseFragment fm;
+    private static BaseActivity ac=null;
+    private static BaseFragment fm=null;
 
     public BaseDao(BaseActivity ac) {
         this.ac = ac;
@@ -20,27 +20,30 @@ class BaseDao {
         this.fm = fm;
     }
 
-    protected static Callback callback = new Callback() {
+    public static BaseDao getInstance(BaseActivity ac){
+        return new BaseDao(ac);
+    }
+
+    public static BaseDao getInstance(BaseFragment fm){
+        return new BaseDao(fm);
+    }
+
+
+    public Callback callback = new Callback() {
         @Override
         public void onResponse(retrofit2.Call call, retrofit2.Response response) {
-            ac.onCallbackResponse(call, response);
+            if(ac!=null)
+                BaseActivity.onCallbackResponse(call, response, ac);
+            else
+                BaseFragment.onCallbackResponse(call, response, fm);
         }
 
         @Override
         public void onFailure(retrofit2.Call call, Throwable t) {
-            ac.onCallbackFailure(t);
-        }
-    };
-
-    protected static Callback callbackFragment = new Callback() {
-        @Override
-        public void onResponse(retrofit2.Call call, retrofit2.Response response) {
-            fm.onCallbackResponse(call, response);
-        }
-
-        @Override
-        public void onFailure(retrofit2.Call call, Throwable t) {
-            fm.onCallbackFailure(t);
+            if(ac!=null)
+                BaseActivity.onCallbackFailure(t, ac);
+            else
+                BaseFragment.onCallbackFailure(t, fm);
         }
     };
 

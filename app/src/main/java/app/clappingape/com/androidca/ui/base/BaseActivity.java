@@ -25,14 +25,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Componen
     }
 
 
-    public void onCallbackResponse(Call<MultipleResponse> call, Response response) {
-        DialogComponent.dismissProgressDialog(this);
-        this.apiCallbackResponse((MultipleResponse) response.body());
+    public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseActivity ac) {
+        DialogComponent.dismissProgressDialog(ac);
+        ac.apiCallbackResponse((MultipleResponse) response.body());
     }
 
-    public void onCallbackFailure(Throwable t) {
-        DialogComponent.dismissProgressDialog(this);
-        this.apiCallbackFailure(t.getMessage());
+    public static void onCallbackFailure(Throwable t, BaseActivity ac) {
+        DialogComponent.dismissProgressDialog(ac);
+        ac.apiCallbackFailure(t.getMessage());
     }
 
 

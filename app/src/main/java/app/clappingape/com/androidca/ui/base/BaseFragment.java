@@ -24,14 +24,14 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-    public void onCallbackResponse(Call<MultipleResponse> call, Response response) {
-        DialogComponent.dismissProgressDialog((BaseActivity) getActivity());
-        this.apiCallbackResponse((MultipleResponse) response.body());
+    public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseFragment fm) {
+        DialogComponent.dismissProgressDialog((BaseActivity) fm.getActivity());
+        fm.apiCallbackResponse((MultipleResponse) response.body());
     }
 
-    public void onCallbackFailure(Throwable t) {
-        DialogComponent.dismissProgressDialog((BaseActivity) getActivity());
-        this.apiCallbackFailure(t.getMessage());
+    public static void onCallbackFailure(Throwable t, BaseFragment fm) {
+        DialogComponent.dismissProgressDialog((BaseActivity) fm.getActivity());
+        fm.apiCallbackFailure(t.getMessage());
     }
 
 

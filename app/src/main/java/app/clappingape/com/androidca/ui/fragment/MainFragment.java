@@ -24,6 +24,7 @@ public class MainFragment extends BaseFragment {
     }
 
 
+
     @Override
     protected void apiCallbackResponse(MultipleResponse mr) {
         if(mr.getStatus().equals("ok")){
@@ -32,5 +33,7 @@ public class MainFragment extends BaseFragment {
             Toast.makeText(getActivity(), "Status: 200, but error", Toast.LENGTH_LONG).show();
         }
     }
+
+
 
 }

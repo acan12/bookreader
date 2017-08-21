@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import app.clappingape.com.androidca.R;
 import app.clappingape.com.androidca.model.api.response.MultipleResponse;
+import app.clappingape.com.androidca.model.dao.BaseDao;
 import app.clappingape.com.androidca.model.dao.SourceDao;
 import app.clappingape.com.androidca.ui.base.BaseActivity;
 
@@ -21,8 +22,9 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         SourceDao dao = new SourceDao(this);
-        dao.getSourcesDAO(this);
+        dao.getSourcesDAO(this, BaseDao.getInstance(this).callback);
     }
+
 
 
     @Override
