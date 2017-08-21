@@ -13,9 +13,10 @@ import app.clappingape.com.kokoro.ui.base.BaseActivity;
 public class DialogComponent {
     private static ProgressDialog dialog;
 
-    synchronized public static AlertDialog showProgressDialog(Context context){
+    synchronized public static ProgressDialog showProgressDialog(Context context){
         if(dialog == null){
             dialog = new ProgressDialog(context);
+            dialog.setMessage("...Loading");
             dialog.show();
         }
 
