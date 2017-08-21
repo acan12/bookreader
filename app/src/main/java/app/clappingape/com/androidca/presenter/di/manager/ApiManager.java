@@ -1,11 +1,11 @@
-package app.clappingape.com.androidca.presentation.di.manager;
+package app.clappingape.com.androidca.presenter.di.manager;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import app.clappingape.com.androidca.IConfig;
 import app.clappingape.com.androidca.model.api.ApiService;
-import app.clappingape.com.androidca.presentation.di.IApi;
+import app.clappingape.com.androidca.presenter.di.IApi;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

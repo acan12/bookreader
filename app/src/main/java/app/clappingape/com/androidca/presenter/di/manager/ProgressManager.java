@@ -1,7 +1,7 @@
-package app.clappingape.com.androidca.presentation.di.manager;
+package app.clappingape.com.androidca.presenter.di.manager;
 
 
-import app.clappingape.com.androidca.presentation.di.IProgress;
+import app.clappingape.com.androidca.presenter.di.IProgress;
 
 /**
  * Created by ary on 5/28/17.

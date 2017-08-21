@@ -1,4 +1,4 @@
-package app.clappingape.com.androidca.presentation.di;
+package app.clappingape.com.androidca.presenter.di;
 
 /**
  * Created by ary on 5/28/17.

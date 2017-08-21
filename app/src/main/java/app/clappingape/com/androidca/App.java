@@ -3,10 +3,10 @@ package app.clappingape.com.androidca;
 import android.app.Application;
 import android.content.Context;
 
-import app.clappingape.com.androidca.presentation.di.component.AppComponent;
-import app.clappingape.com.androidca.presentation.di.component.DaggerAppComponent;
-import app.clappingape.com.androidca.presentation.di.module.ApiServiceModule;
-import app.clappingape.com.androidca.presentation.di.module.AppModule;
+import app.clappingape.com.androidca.presenter.di.component.AppComponent;
+import app.clappingape.com.androidca.presenter.di.component.DaggerAppComponent;
+import app.clappingape.com.androidca.presenter.di.module.ApiServiceModule;
+import app.clappingape.com.androidca.presenter.di.module.AppModule;
 
 /**
  * Created by arysuryawan on 8/17/17.

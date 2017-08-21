@@ -1,9 +1,9 @@
-package app.clappingape.com.androidca.presentation.di.module;
+package app.clappingape.com.androidca.presenter.di.module;
 
 
 import app.clappingape.com.androidca.App;
-import app.clappingape.com.androidca.presentation.di.IProgress;
-import app.clappingape.com.androidca.presentation.di.manager.ProgressManager;
+import app.clappingape.com.androidca.presenter.di.IProgress;
+import app.clappingape.com.androidca.presenter.di.manager.ProgressManager;
 import dagger.Module;
 import dagger.Provides;
 

@@ -1,4 +1,4 @@
-package app.clappingape.com.androidca.presentation.di;
+package app.clappingape.com.androidca.presenter.di;
 
 import app.clappingape.com.androidca.model.api.ApiService;
 

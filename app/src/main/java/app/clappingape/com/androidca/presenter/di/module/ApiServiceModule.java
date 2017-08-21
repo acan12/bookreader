@@ -1,11 +1,11 @@
-package app.clappingape.com.androidca.presentation.di.module;
+package app.clappingape.com.androidca.presenter.di.module;
 
 import android.content.Context;
 
 import javax.inject.Singleton;
 
-import app.clappingape.com.androidca.presentation.di.IApi;
-import app.clappingape.com.androidca.presentation.di.manager.ApiManager;
+import app.clappingape.com.androidca.presenter.di.IApi;
+import app.clappingape.com.androidca.presenter.di.manager.ApiManager;
 import dagger.Module;
 import dagger.Provides;
 

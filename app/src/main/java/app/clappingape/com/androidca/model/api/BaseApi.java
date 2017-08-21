@@ -4,7 +4,7 @@ package app.clappingape.com.androidca.model.api;
 import android.content.Context;
 
 import app.clappingape.com.androidca.App;
-import app.clappingape.com.androidca.presentation.di.IApi;
+import app.clappingape.com.androidca.presenter.di.IApi;
 
 /**
  * Created by arysuryawan on 8/18/17.
