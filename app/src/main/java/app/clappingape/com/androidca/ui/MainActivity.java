@@ -21,8 +21,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        showProgressDialogOnDAOCalled(new SourceDao(this){
-
+        showProgressDialogOnDAOCalled(new SourceDao(this) {
             @Override
             public void call() {
                 this.getSourcesDAO(MainActivity.this, BaseDao.getInstance(MainActivity.this).callback);
@@ -34,9 +33,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void apiCallbackResponse(MultipleResponse mr) {
-        if(mr.getStatus().equals("ok")){
-            Toast.makeText(this, "Status: OK, Size= "+mr.getSources().size(), Toast.LENGTH_LONG).show();
-        }else{
+        if (mr.getStatus().equals("ok")) {
+            Toast.makeText(this, "Status: OK, Size= " + mr.getSources().size(), Toast.LENGTH_LONG).show();
+        } else {
             Toast.makeText(this, "Status: 200, but error", Toast.LENGTH_LONG).show();
         }
 
@@ -46,7 +45,6 @@ public class MainActivity extends BaseActivity {
     protected void apiCallbackFailure(String message) {
         Log.e("ERROR: ", message);
     }
-
 
 
 }
