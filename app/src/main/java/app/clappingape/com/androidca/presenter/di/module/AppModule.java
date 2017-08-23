@@ -1,6 +1,8 @@
 package app.clappingape.com.androidca.presenter.di.module;
 
 
+import javax.inject.Singleton;
+
 import app.clappingape.com.androidca.App;
 import app.clappingape.com.androidca.presenter.di.IProgress;
 import app.clappingape.com.androidca.presenter.di.manager.ProgressManager;
@@ -21,6 +23,7 @@ public class AppModule {
     }
 
     @Provides
+    @Singleton
     protected IProgress provideProgressDialog() {
         return new ProgressManager();
     }
