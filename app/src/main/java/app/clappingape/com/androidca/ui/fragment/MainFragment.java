@@ -24,16 +24,14 @@ public class MainFragment extends BaseFragment {
     }
 
 
-
     @Override
-    protected void onApiCallbackResponse(MultipleResponse mr) {
-        if(mr.getStatus().equals("ok")){
-            Toast.makeText(getActivity(), "Status: OK, Size= "+mr.getSources().size(), Toast.LENGTH_LONG).show();
-        }else{
+    protected void onApiCallbackResponse(MultipleResponse mr, String keyCallback) {
+        if (mr.getStatus().equals("ok")) {
+            Toast.makeText(getActivity(), "Status: OK, Size= " + mr.getSources().size(), Toast.LENGTH_LONG).show();
+        } else {
             Toast.makeText(getActivity(), "Status: 200, but error", Toast.LENGTH_LONG).show();
         }
     }
-
 
 
 }

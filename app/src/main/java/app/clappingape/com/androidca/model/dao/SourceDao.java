@@ -19,5 +19,6 @@ public class SourceDao extends BaseDao {
         Api.doApiSources(ac, callback);
     }
 
-    public void call() {}
+    public void call() {
+    }
 }

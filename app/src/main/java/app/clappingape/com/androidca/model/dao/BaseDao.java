@@ -10,33 +10,49 @@ import retrofit2.Callback;
 
 public class BaseDao {
 
+    private String keyCallback;
+
     private static BaseActivity ac = null;
     private static BaseFragment fm = null;
 
-    public BaseDao(BaseActivity ac) {
-        this.ac = ac;
+
+    public BaseDao(Object obj) {
+        if (obj instanceof BaseActivity) this.ac = ac;
+        if (obj instanceof BaseFragment) this.fm = fm;
     }
 
-    public BaseDao(BaseFragment fm) {
-        this.fm = fm;
+    public BaseDao(Object obj, String keyCallback) {
+        if (obj instanceof BaseActivity) {
+            this.ac = (BaseActivity) obj;
+            this.keyCallback = keyCallback;
+        }
+        if (obj instanceof BaseFragment) {
+            this.fm = (BaseFragment) obj;
+            this.keyCallback = keyCallback;
+        }
     }
 
-    public static BaseDao getInstance(BaseActivity ac) {
-        return new BaseDao(ac);
+
+    public static BaseDao getInstance(Object current) {
+        return getInstance(current, "");
     }
 
-    public static BaseDao getInstance(BaseFragment fm) {
-        return new BaseDao(fm);
+    public static BaseDao getInstance(Object current, String keyCallback) {
+        if (current instanceof BaseActivity)
+            return new BaseDao((BaseActivity) current, keyCallback);
+        else if (current instanceof BaseFragment)
+            return new BaseDao((BaseFragment) current, keyCallback);
+        return null;
     }
-
 
     public Callback callback = new Callback() {
+
         @Override
         public void onResponse(retrofit2.Call call, retrofit2.Response response) {
             if (ac != null)
-                BaseActivity.onCallbackResponse(call, response, ac);
+                BaseActivity.onCallbackResponse(call, response, ac, keyCallback);
             else
-                BaseFragment.onCallbackResponse(call, response, fm);
+                BaseFragment.onCallbackResponse(call, response, fm, keyCallback);
         }
 
         @Override
@@ -47,7 +63,6 @@ public class BaseDao {
                 BaseFragment.onCallbackFailure(t, fm);
         }
     };
-
 
 
 }

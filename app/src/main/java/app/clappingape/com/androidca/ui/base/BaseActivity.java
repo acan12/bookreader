@@ -18,7 +18,7 @@ import support.component.DialogComponent;
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements ComponentCallbacks2 {
-    protected void onApiCallbackResponse(MultipleResponse mr) {
+    protected void onApiCallbackResponse(MultipleResponse mr, String keyCallback) {
     }
 
     protected void onApiCallbackFailure(String message) {
@@ -34,11 +34,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Componen
     }
 
 
-
-
-    public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseActivity ac) {
+    public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseActivity ac, String keyCallback) {
         DialogComponent.dismissProgressDialog(ac);
-        ac.onApiCallbackResponse((MultipleResponse) response.body());
+        ac.onApiCallbackResponse((MultipleResponse) response.body(), keyCallback);
     }
 
     public static void onCallbackFailure(Throwable t, BaseActivity ac) {

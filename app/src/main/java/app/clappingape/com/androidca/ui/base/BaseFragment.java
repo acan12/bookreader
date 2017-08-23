@@ -14,7 +14,7 @@ import support.component.DialogComponent;
  */
 
 public abstract class BaseFragment extends Fragment {
-    protected void onApiCallbackResponse(MultipleResponse mr) {
+    protected void onApiCallbackResponse(MultipleResponse mr, String keyCallback) {
     }
 
     protected void onApiCallbackFailure(String message) {
@@ -24,9 +24,9 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-    public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseFragment fm) {
+    public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseFragment fm, String keyCallback) {
         DialogComponent.dismissProgressDialog((BaseActivity) fm.getActivity());
-        fm.onApiCallbackResponse((MultipleResponse) response.body());
+        fm.onApiCallbackResponse((MultipleResponse) response.body(), keyCallback);
     }
 
     public static void onCallbackFailure(Throwable t, BaseFragment fm) {
