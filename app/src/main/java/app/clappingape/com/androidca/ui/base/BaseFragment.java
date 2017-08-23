@@ -14,10 +14,10 @@ import support.component.DialogComponent;
  */
 
 public abstract class BaseFragment extends Fragment {
-    protected void apiCallbackResponse(MultipleResponse mr) {
+    protected void onApiCallbackResponse(MultipleResponse mr) {
     }
 
-    protected void apiCallbackFailure(String message) {
+    protected void onApiCallbackFailure(String message) {
         // --- default callback if not defined on child class --
         Toast.makeText(getActivity(), "Error: " + message, Toast.LENGTH_LONG).show();
         Log.e("Message:", message);
@@ -26,12 +26,12 @@ public abstract class BaseFragment extends Fragment {
 
     public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseFragment fm) {
         DialogComponent.dismissProgressDialog((BaseActivity) fm.getActivity());
-        fm.apiCallbackResponse((MultipleResponse) response.body());
+        fm.onApiCallbackResponse((MultipleResponse) response.body());
     }
 
     public static void onCallbackFailure(Throwable t, BaseFragment fm) {
         DialogComponent.dismissProgressDialog((BaseActivity) fm.getActivity());
-        fm.apiCallbackFailure(t.getMessage());
+        fm.onApiCallbackFailure(t.getMessage());
     }
 
 

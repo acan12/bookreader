@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import app.clappingape.com.androidca.App;
 import app.clappingape.com.androidca.model.api.response.MultipleResponse;
-import app.clappingape.com.androidca.model.dao.BaseDao;
 import app.clappingape.com.androidca.model.dao.SourceDao;
 import app.clappingape.com.androidca.presenter.di.IProgress;
 import retrofit2.Call;
@@ -19,10 +18,10 @@ import support.component.DialogComponent;
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements ComponentCallbacks2 {
-    protected void apiCallbackResponse(MultipleResponse mr) {
+    protected void onApiCallbackResponse(MultipleResponse mr) {
     }
 
-    protected void apiCallbackFailure(String message) {
+    protected void onApiCallbackFailure(String message) {
         // --- default callback if not defined on child class --
         Toast.makeText(this, "Error: " + message, Toast.LENGTH_LONG).show();
         Log.e("Message:", message);
@@ -39,12 +38,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Componen
 
     public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseActivity ac) {
         DialogComponent.dismissProgressDialog(ac);
-        ac.apiCallbackResponse((MultipleResponse) response.body());
+        ac.onApiCallbackResponse((MultipleResponse) response.body());
     }
 
     public static void onCallbackFailure(Throwable t, BaseActivity ac) {
         DialogComponent.dismissProgressDialog(ac);
-        ac.apiCallbackFailure(t.getMessage());
+        ac.onApiCallbackFailure(t.getMessage());
     }
 
 
