@@ -37,8 +37,19 @@ public class MainActivity extends BaseActivity {
     protected void onApiCallbackResponse(MultipleResponse mr, String callbackKey) {
 
         switch (callbackKey) {
-            case "main":
+            case IConfig.KEY_CALLER_API_SOURCE:
+                Toast.makeText(this, IConfig.KEY_CALLER_API_SOURCE, Toast.LENGTH_LONG).show();
 
+                showProgressDialogOnDAOCalled(new SourceDao(this) {
+                    @Override
+                    public void call() {
+                        this.getSourcesDAO(MainActivity.this, BaseDao.getInstance(MainActivity.this, IConfig.KEY_CALLER_API_ARTICLE).callback);
+                    }
+                });
+
+                break;
+            case IConfig.KEY_CALLER_API_ARTICLE:
+                Toast.makeText(this, IConfig.KEY_CALLER_API_ARTICLE, Toast.LENGTH_LONG).show();
                 break;
             default:
                 // line default code

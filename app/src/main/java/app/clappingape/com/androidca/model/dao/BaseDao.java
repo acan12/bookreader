@@ -10,10 +10,11 @@ import retrofit2.Callback;
 
 public class BaseDao {
 
-    private String keyCallback;
+    private String callbackKey;
 
     private static BaseActivity ac = null;
     private static BaseFragment fm = null;
+
 
 
     public BaseDao(Object obj) {
@@ -24,11 +25,11 @@ public class BaseDao {
     public BaseDao(Object obj, String keyCallback) {
         if (obj instanceof BaseActivity) {
             this.ac = (BaseActivity) obj;
-            this.keyCallback = keyCallback;
+            this.callbackKey = keyCallback;
         }
         if (obj instanceof BaseFragment) {
             this.fm = (BaseFragment) obj;
-            this.keyCallback = keyCallback;
+            this.callbackKey = keyCallback;
         }
     }
 
@@ -37,11 +38,11 @@ public class BaseDao {
         return getInstance(current, "");
     }
 
-    public static BaseDao getInstance(Object current, String keyCallback) {
+    public static BaseDao getInstance(Object current, String key) {
         if (current instanceof BaseActivity)
-            return new BaseDao((BaseActivity) current, keyCallback);
+            return new BaseDao((BaseActivity) current, key);
         else if (current instanceof BaseFragment)
-            return new BaseDao((BaseFragment) current, keyCallback);
+            return new BaseDao((BaseFragment) current, key);
         return null;
     }
 
@@ -50,9 +51,9 @@ public class BaseDao {
         @Override
         public void onResponse(retrofit2.Call call, retrofit2.Response response) {
             if (ac != null)
-                BaseActivity.onCallbackResponse(call, response, ac, keyCallback);
+                BaseActivity.onCallbackResponse(call, response, ac, callbackKey);
             else
-                BaseFragment.onCallbackResponse(call, response, fm, keyCallback);
+                BaseFragment.onCallbackResponse(call, response, fm, callbackKey);
         }
 
         @Override
