@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
-    protected void onApiCallbackResponse(MultipleResponse mr, String callbackKey) {
+    protected void onApiResponseCallback(MultipleResponse mr, String callbackKey) {
 
         switch (callbackKey) {
             case IConfig.KEY_CALLER_API_SOURCE:
@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onApiCallbackFailure(String message) {
+    protected void onApiFailureCallback(String message) {
         Log.e("ERROR: ", message);
     }
 

@@ -18,10 +18,10 @@ import support.component.DialogComponent;
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements ComponentCallbacks2 {
-    protected void onApiCallbackResponse(MultipleResponse mr, String keyCallback) {
+    protected void onApiResponseCallback(MultipleResponse mr, String keyCallback) {
     }
 
-    protected void onApiCallbackFailure(String message) {
+    protected void onApiFailureCallback(String message) {
         // --- default callback if not defined on child class --
         Toast.makeText(this, "Error: " + message, Toast.LENGTH_LONG).show();
         Log.e("Message:", message);
@@ -34,14 +34,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Componen
     }
 
 
-    public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseActivity ac, String keyCallback) {
+    public static void onResponseCallback(Call<MultipleResponse> call, Response response, BaseActivity ac, String keyCallback) {
         DialogComponent.dismissProgressDialog(ac);
-        ac.onApiCallbackResponse((MultipleResponse) response.body(), keyCallback);
+        ac.onApiResponseCallback((MultipleResponse) response.body(), keyCallback);
     }
 
-    public static void onCallbackFailure(Throwable t, BaseActivity ac) {
+    public static void onFailureCallback(Throwable t, BaseActivity ac) {
         DialogComponent.dismissProgressDialog(ac);
-        ac.onApiCallbackFailure(t.getMessage());
+        ac.onApiFailureCallback(t.getMessage());
     }
 
 

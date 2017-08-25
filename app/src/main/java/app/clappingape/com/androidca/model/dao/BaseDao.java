@@ -51,17 +51,17 @@ public class BaseDao {
         @Override
         public void onResponse(retrofit2.Call call, retrofit2.Response response) {
             if (ac != null)
-                BaseActivity.onCallbackResponse(call, response, ac, callbackKey);
+                BaseActivity.onResponseCallback(call, response, ac, callbackKey);
             else
-                BaseFragment.onCallbackResponse(call, response, fm, callbackKey);
+                BaseFragment.onResponseCallback(call, response, fm, callbackKey);
         }
 
         @Override
         public void onFailure(retrofit2.Call call, Throwable t) {
             if (ac != null)
-                BaseActivity.onCallbackFailure(t, ac);
+                BaseActivity.onFailureCallback(t, ac);
             else
-                BaseFragment.onCallbackFailure(t, fm);
+                BaseFragment.onFailureCallback(t, fm);
         }
     };
 

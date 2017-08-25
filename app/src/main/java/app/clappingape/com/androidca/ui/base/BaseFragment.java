@@ -14,24 +14,24 @@ import support.component.DialogComponent;
  */
 
 public abstract class BaseFragment extends Fragment {
-    protected void onApiCallbackResponse(MultipleResponse mr, String keyCallback) {
+    protected void onApiResponseCallback(MultipleResponse mr, String keyCallback) {
     }
 
-    protected void onApiCallbackFailure(String message) {
+    protected void onApiFailureCallback(String message) {
         // --- default callback if not defined on child class --
         Toast.makeText(getActivity(), "Error: " + message, Toast.LENGTH_LONG).show();
         Log.e("Message:", message);
     }
 
 
-    public static void onCallbackResponse(Call<MultipleResponse> call, Response response, BaseFragment fm, String keyCallback) {
+    public static void onResponseCallback(Call<MultipleResponse> call, Response response, BaseFragment fm, String keyCallback) {
         DialogComponent.dismissProgressDialog((BaseActivity) fm.getActivity());
-        fm.onApiCallbackResponse((MultipleResponse) response.body(), keyCallback);
+        fm.onApiResponseCallback((MultipleResponse) response.body(), keyCallback);
     }
 
-    public static void onCallbackFailure(Throwable t, BaseFragment fm) {
+    public static void onFailureCallback(Throwable t, BaseFragment fm) {
         DialogComponent.dismissProgressDialog((BaseActivity) fm.getActivity());
-        fm.onApiCallbackFailure(t.getMessage());
+        fm.onApiFailureCallback(t.getMessage());
     }
 
 
