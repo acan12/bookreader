@@ -5,9 +5,9 @@ package app.clappingape.com.androidca;
  */
 
 public interface IConfig {
-    final String API_BASE_URL = "https://newsapi.org/v1/";
+    String API_BASE_URL = "https://newsapi.org/v1/";
 
-    final String KEY_CALLER_API_SOURCE = "call_source";
-    final String KEY_CALLER_API_ARTICLE = "call_article";
+    String KEY_CALLER_API_SOURCE = "call_source";
+    String KEY_CALLER_API_ARTICLE = "call_article";
 
 }

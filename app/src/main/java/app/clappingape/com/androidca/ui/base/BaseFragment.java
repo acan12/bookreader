@@ -7,7 +7,7 @@ import android.widget.Toast;
 import app.clappingape.com.androidca.model.api.response.MultipleResponse;
 import retrofit2.Call;
 import retrofit2.Response;
-import support.component.DialogComponent;
+import app.clappingape.com.androidca.ui.component.DialogComponent;
 
 /**
  * Created by arysuryawan on 8/16/17.

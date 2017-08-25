@@ -66,4 +66,5 @@ public class BaseDao {
     };
 
 
+    public void call() {}
 }

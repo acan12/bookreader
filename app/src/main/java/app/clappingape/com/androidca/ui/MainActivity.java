@@ -16,7 +16,6 @@ import app.clappingape.com.androidca.model.dao.SourceDao;
 import app.clappingape.com.androidca.ui.base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Callback;
 
 
 public class MainActivity extends BaseActivity {
@@ -42,7 +41,7 @@ public class MainActivity extends BaseActivity {
         paymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DemoMidtransPaymentActivity.class);
                 startActivity(intent);
             }
         });

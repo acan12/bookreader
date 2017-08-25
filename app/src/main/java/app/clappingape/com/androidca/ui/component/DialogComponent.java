@@ -1,4 +1,4 @@
-package support.component;
+package app.clappingape.com.androidca.ui.component;
 
 
 import android.app.ProgressDialog;

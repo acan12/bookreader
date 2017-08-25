@@ -7,11 +7,11 @@ import android.widget.Toast;
 
 import app.clappingape.com.androidca.App;
 import app.clappingape.com.androidca.model.api.response.MultipleResponse;
-import app.clappingape.com.androidca.model.dao.SourceDao;
+import app.clappingape.com.androidca.model.dao.BaseDao;
 import app.clappingape.com.androidca.presenter.di.IProgress;
 import retrofit2.Call;
 import retrofit2.Response;
-import support.component.DialogComponent;
+import app.clappingape.com.androidca.ui.component.DialogComponent;
 
 /**
  * Created by arysuryawan on 8/16/17.
@@ -27,7 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Componen
         Log.e("Message:", message);
     }
 
-    protected void showProgressDialogOnDAOCalled(SourceDao dao) {
+    protected void showProgressDialogOnDAOCalled(BaseDao dao) {
         IProgress progress = App.getComponent(this).getProgressDialog();
         progress.showProgressDialog(this);
         dao.call();

@@ -87,11 +87,14 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
-    compile 'com.midtrans:corekit:1.9.2-SANDBOX'
-    compile 'com.midtrans:uikit:1.9.2-SANDBOX'
 
     // testing
     compile 'com.jayway.android.robotium:robotium-solo:5.2.1'
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'junit:junit:4.12'
+
+
+    // optional connection with Midtrans
+    compile 'com.midtrans:corekit:1.9.2-SANDBOX'
+    compile 'com.midtrans:uikit:1.9.2-SANDBOX'
 }
