@@ -1,4 +1,4 @@
-package app.clappingape.com.androidca.model.dao;
+package app.clappingape.com.androidca.presenter.dao;
 
 import app.clappingape.com.androidca.ui.base.BaseActivity;
 import app.clappingape.com.androidca.ui.base.BaseFragment;
@@ -22,7 +22,7 @@ public class BaseDao {
         if (obj instanceof BaseFragment) this.fm = fm;
     }
 
-    public BaseDao(Object obj, String keyCallback) {
+    private BaseDao(Object obj, String keyCallback) {
         if (obj instanceof BaseActivity) {
             this.ac = (BaseActivity) obj;
             this.callbackKey = keyCallback;

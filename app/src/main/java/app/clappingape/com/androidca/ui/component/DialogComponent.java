@@ -25,7 +25,7 @@ public class DialogComponent {
     }
 
     public static void dismissProgressDialog(BaseActivity ac) {
-        if (!ac.isFinishing()) {
+        if (!ac.isFinishing() && dialog != null) {
             dialog.dismiss();
             dialog = null;
         }

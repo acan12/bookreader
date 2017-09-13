@@ -1,6 +1,7 @@
-package app.clappingape.com.androidca.model.dao;
+package app.clappingape.com.androidca.presenter.dao;
 
 import app.clappingape.com.androidca.model.api.Api;
+import app.clappingape.com.androidca.presenter.dao.BaseDao;
 import app.clappingape.com.androidca.ui.base.BaseActivity;
 import retrofit2.Callback;
 

@@ -36,7 +36,7 @@ public class ApiManager implements IApi {
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
                 Request request = original.newBuilder()
-                        .header("User-Agent", "Kokoro")
+                        .header("User-Agent", "base")
                         .header("Accept", "application/json")
                         .method(original.method(), original.body())
                         .build();
