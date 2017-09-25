@@ -1,7 +1,16 @@
 <resources>
-    <string name="app_name">CA Android Base</string>
+    <string name="app_name">Demo Gramedia</string>
 
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="list_example">List Example</string>
+    <string name="standalone_example">Standalone Example</string>
+    <string name="description">Android Page Curl is an OpenSource implementation of a book like page curl. It is very simple but yet
+    	effective. Fore more information and the source code check the projects site: http://code.google.com/p/android-page-curl\n\n
+    	Android Page Curl has been created by Moritz Wundke from http://www.MysticTreeGames.com\n\n
+    	Choose an example and try.</string>
+
+    <string name="html_page_content"><i>message italic <h1>%1$s</h1></i></string>
 </resources>

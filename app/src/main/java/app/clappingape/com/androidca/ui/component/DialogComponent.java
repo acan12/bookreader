@@ -14,6 +14,10 @@ import app.clappingape.com.androidca.ui.base.BaseActivity;
 public class DialogComponent {
     private static ProgressDialog dialog;
 
+    public static ProgressDialog getDialog() {
+        return dialog;
+    }
+
     synchronized public static ProgressDialog showProgressDialog(Context context) {
         if (dialog == null) {
             dialog = new ProgressDialog(context);

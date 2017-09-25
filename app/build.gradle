@@ -65,6 +65,7 @@ repositories {
     jcenter()
     // Add the midtrans repository into the list of repositories
     maven { url "https://dl.bintray.com/pt-midtrans/maven" }
+    google()
 }
 
 dependencies {
@@ -72,10 +73,12 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.+'
-    compile 'com.android.support:design:25.+'
-    compile 'com.android.support:support-vector-drawable:25.+'
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:support-vector-drawable:26.1.0'
 
+    // additional library
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
@@ -84,16 +87,11 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:2.8"
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'org.greenrobot:greendao:3.2.2'
-    compile 'net.zetetic:android-database-sqlcipher:3.5.6'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'   // RX
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1' // RX
 
     // testing
     compile 'com.jayway.android.robotium:robotium-solo:5.2.1'
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'junit:junit:4.12'
-
-
-    // optional connection with Midtrans
-    compile 'com.midtrans:corekit:1.9.2-SANDBOX'
-    compile 'com.midtrans:uikit:1.9.2-SANDBOX'
 }

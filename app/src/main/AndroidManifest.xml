@@ -24,9 +24,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.DemoMidtransPaymentActivity"
-            android:parentActivityName=".ui.MainActivity" />
     </application>
 
 </manifest>
