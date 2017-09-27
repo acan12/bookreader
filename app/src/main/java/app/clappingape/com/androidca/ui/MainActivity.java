@@ -8,12 +8,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Html;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import app.clappingape.com.androidca.R;
 import app.clappingape.com.androidca.ui.component.curl_view.CurlPage;
@@ -51,7 +54,7 @@ public class MainActivity extends Activity {
 
 
         final int finalIndex = index;
-        RxCompositeDisposableManager.doAction(new RxCompositeDisposableManager.OnProcess(){
+        RxCompositeDisposableManager.doAction(new RxCompositeDisposableManager.OnProcess() {
             @Override
             public void onCall() {
 
@@ -59,33 +62,25 @@ public class MainActivity extends Activity {
                 content = getTextFromUrl("https://www.getscoop.com/id/terms?lite=true").trim();
 
             }
-        }, new RxCompositeDisposableManager.RxCallback(){
+        }, new RxCompositeDisposableManager.RxCallback() {
             @Override
             public void onComplete() {
 
-//                String[] contents = content.split("\\r?\\n");
-                int page = 32;
-                int num = content.length()/page;
-                String[] contents = new String[page];//content.split("(?<=\\G.{"+num+"})");
-                int[] layouts = new int[page];
+                String[] contents = getSplitContent(content, getWindowManager());
+                int[] layouts = new int[contents.length];
 
-                for(int i=0; i<page; i++){
-                    layouts[i] = R.layout.sample;
-                    contents[i] = getSplitContent(i, num, content);
+                int i = 0;
+                while (i < contents.length) {
+                    layouts[i] = (i == 0) ? R.layout.cover : R.layout.content;
+                    i++;
                 }
                 pageProvider = new PageProvider(layouts, contents);
                 curlView.setPageProvider(pageProvider);
-                curlView.setCurrentIndex(finalIndex, MainActivity. this);
+                curlView.setCurrentIndex(finalIndex, MainActivity.this);
                 curlView.setBackgroundColor(0xFF202830);
             }
         });
 
-    }
-
-    private String getSplitContent(int i, int num, String content) {
-        String src = content.substring(i*num, (i+1)*num);
-
-        return src;
     }
 
 
@@ -127,6 +122,57 @@ public class MainActivity extends Activity {
     }
 
 
+    private static int getTextOccurences(String source, String sentence) {
+        int occurrences = 0;
+
+        if (source.contains(sentence)) {
+            int withSentenceLength = source.length();
+            int withoutSentenceLength = source.replace(sentence, "").length();
+            occurrences = (withSentenceLength - withoutSentenceLength) / sentence.length();
+        }
+
+        return occurrences;
+    }
+
+    private static String[] getSplitContent(String source, WindowManager windowManager) {
+        List<String> results = new ArrayList<String>();
+        int maxlimit = getFixContentLength(windowManager);
+        int startIndex = 0;
+        int endIndex = maxlimit;
+
+        results.add("Book Reader");
+        while (startIndex < source.length()) {
+            String hasil = "";
+            int down = endIndex;
+            while (source.charAt(down) != ' ' && down > startIndex) {
+                down--;
+                if (source.charAt(down) == ' ') {
+                    endIndex = down;
+                    break;
+                }
+            }
+            hasil = ((source.length() - endIndex) < maxlimit) ? source.substring(startIndex) : source.substring(startIndex, endIndex);
+            hasil = (getTextOccurences(hasil, "<p>") > getTextOccurences(hasil, "</p>")) ? hasil + "</p>" : hasil;
+            hasil = (getTextOccurences(hasil, "<p>") < getTextOccurences(hasil, "</p>")) ? "<p>" + hasil : hasil;
+
+            startIndex = endIndex + 1;
+            endIndex = ((endIndex + maxlimit) <= source.length()) ? endIndex + maxlimit : source.length() - 1;
+
+            if (startIndex > endIndex) break;
+            results.add(hasil);
+
+        }
+        return (String[]) results.toArray(new String[results.size()]);
+    }
+
+    private static int getFixContentLength(WindowManager windowManager) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.densityDpi;
+
+        return height * 3;
+    }
+
 
     private class PageProvider implements CurlViewComponent.PageProvider {
 
@@ -157,13 +203,18 @@ public class MainActivity extends Activity {
         private Bitmap loadBitmap(String html, int width, int height, int index) {
             LayoutInflater inflater =
                     (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            Log.d("index", String.valueOf(index));
-            View v = inflater.inflate(mLayouts[index], null);
-            TextView web = (TextView) v.findViewById(R.id.content_layout);
-            web.setText(Html.fromHtml(html));
-//            web.setText(Html.fromHtml(getResources().getString(R.string.html_page_content, (index + 2) + "")));
-//            web.loadUrl("https://www.getscoop.com/id/terms?lite=true");
+            final View v = inflater.inflate(mLayouts[index], null);
 
+            if (index == 0) {
+                TextView titleCover = (TextView) v.findViewById(R.id.cover_layout);
+                titleCover.setText(html);
+            } else {
+
+                TextView web = (TextView) v.findViewById(R.id.content_layout);
+                web.setText(Html.fromHtml(html));
+                TextView page = (TextView) v.findViewById(R.id.page);
+                page.setText((index) + " of " + (mLayouts.length - 1));
+            }
             v.measure(
                     View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
                     View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
@@ -182,16 +233,13 @@ public class MainActivity extends Activity {
         public void onSizeChanged(int w, int h) {
             if (w > h) {
                 curlView.setViewMode(CurlViewComponent.SHOW_TWO_PAGES);
-                curlView.setMargins(.1f, .05f, .1f, .05f);
+                curlView.setMargins(.1f, 0, .1f, 0);
             } else {
                 curlView.setViewMode(CurlViewComponent.SHOW_ONE_PAGE);
                 curlView.setMargins(.1f, 0, 0, 0);
             }
         }
     }
-
-
-
 
 
 }
